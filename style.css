@@ -1,0 +1,185 @@
+#opening-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #06210b 0%, #1b5e20 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+    transition: opacity 1s ease, visibility 1s;
+    text-align: center;
+    color: #ffd700;
+}
+
+.opening-content {
+    padding: 20px;
+}
+
+.moon-icon { font-size: 80px; margin-bottom: 20px; animation: float 3s ease-in-out infinite; }
+
+.btn-buka {
+    margin-top: 30px;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    background: #ffd700;
+    color: #1b5e20;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    transition: 0.3s;
+}
+
+.btn-buka:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); }
+
+/* Animasi melayang untuk ikon bulan */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Class untuk menghilangkan overlay */
+.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at center, #1b5e20 0%, #06210b 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+#fireworks {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+}
+
+/* Animasi Bulan Sabit */
+.moon-container {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 80px;
+    height: 80px;
+    animation: rotateMoon 25s linear infinite;
+    z-index: 1;
+}
+
+.moon {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 12px 12px 0 0 #ffd700;
+    filter: drop-shadow(0 0 10px #ffd700);
+}
+
+@keyframes rotateMoon {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    z-index: 10;
+    max-width: 380px;
+    border: 2px solid #ffd700;
+    position: relative;
+    backdrop-filter: blur(5px);
+}
+
+.music-control {
+    position: absolute;
+    top: 10px; right: 10px;
+    font-size: 10px;
+    background: linear-gradient(45deg, #ffd700, #ffae00);
+    color: #1b5e20;
+    padding: 6px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.family-photo-container {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 15px auto;
+    border-radius: 50%;
+    border: 4px solid #ffd700;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.family-photo { width: 100%; height: 100%; object-fit: cover; }
+
+h1 { color: #1b5e20; margin: 5px 0; font-size: 1.8rem; }
+.divider { height: 1px; background: #ffd700; margin: 15px 0; opacity: 0.5; }
+.message { font-style: italic; color: #444; font-size: 0.9rem; }
+.family-name h3 { font-family: 'Sacramento', cursive; font-size: 2.2rem; color: #1b5e20; margin: 0; }
+
+#countdown { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.time-box { background: #1b5e20; color: white; padding: 5px; border-radius: 8px; min-width: 45px; }
+.time-box span { font-size: 1rem; font-weight: bold; }
+.time-box p { font-size: 0.6rem; margin: 0; }
+
+/* Styling Kontainer Bintang di Opening */
+.stars-container {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Di belakang konten opening */
+}
+
+/* efek bintang dengan box-shadow ganda */
+.stars-container::after {
+    content: "";
+    position: absolute;
+    top: -10px; left: -10px;
+    width: 2px; height: 2px;
+    background: transparent;
+    /* ratusan bintang kecil secara acak menggunakan box-shadow */
+    box-shadow: 
+        10vw 20vh #fff, 25vw 15vh #fff, 40vw 30vh #fff, 60vw 10vh #fff, 80vw 25vh #fff,
+        15vw 45vh #fff, 35vw 60vh #fff, 55vw 50vh #fff, 75vw 65vh #fff, 90vw 55vh #fff,
+        5vw 80vh #fff, 20vw 90vh #fff, 45vw 85vh #fff, 65vw 75vh #fff, 85vw 95vh #fff,
+        12vw 12vh #ffd700, 28vw 38vh #ffd700, 48vw 58vh #ffd700, 68vw 78vh #ffd700, 88vw 98vh #ffd700,
+        3vw 33vh #fff, 18vw 68vh #fff, 53vw 23vh #fff, 73vw 43vh #fff, 93vw 73vh #fff,
+        2vw 50vh #ffd700, 22vw 70vh #ffd700, 42vw 20vh #ffd700, 62vw 40vh #ffd700, 82vw 60vh #ffd700,
+        7vw 95vh #fff, 27vw 5vh #fff, 47vw 47vh #fff, 67vw 88vh #fff, 87vw 15vh #fff,
+        11vw 85vh #ffd700, 31vw 65vh #ffd700, 51vw 45vh #ffd700, 71vw 25vh #ffd700, 91vw 5vh #ffd700;
+    border-radius: 50%;
+    animation: twinkle 4s ease-in-out infinite; /* Animasi berkedip */
+}
+
+/* Animasi Berkedip (Twinkle) */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* penyesuaian pada konten opening agar lebih menonjol */
+.opening-content h2 {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+.opening-content p {
+    color: #fff;
+    opacity: 0.8;
+}
