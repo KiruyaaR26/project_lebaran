@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Idul Fitri - Keluarga Kami</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="opening-overlay">
+        <div class="stars-container"></div>
+
+        <div class="opening-content">
+            <div class="moon-icon">🌙</div>
+            <h2>Satu Pesan Terkirim Untukmu</h2>
+            <p>Dari Keluarga Syarif Hidayat</p>
+            <button id="btn-buka" class="btn-buka">Buka Pesan</button>
+        </div>
+    </div>
+
+    <div class="moon-container">
+        <div class="moon"></div>
+    </div>
+    
+    <canvas id="fireworks"></canvas>
+
+    <div class="container">
+        <div class="card">
+            <div class="music-control" id="musicBtn">🎵 Putar Takbir & Bedug</div>
+            
+            <div class="family-photo-container">
+                <img src="foto/foto_keluarga.jpeg" alt="Foto Keluarga" class="family-photo">
+            </div>
+
+            <p class="pre-title">Selamat Hari Raya</p>
+            <h1>Idul Fitri 1447 H</h1>
+            
+            <div class="divider"></div>
+
+            <p class="message">
+                "Taqabbalallahu minna wa minkum. <br>
+                Semoga Allah menerima amal ibadah kita dan menjadikan kita kembali dalam kesucian."
+            </p>
+
+            <p class="closing">
+                Kami sekeluarga memohon maaf lahir dan batin atas segala kesalahan, kekhilaf, dan perkataan yang kurang berkenan.
+            </p>
+
+            <div class="family-name">
+                <p>Salam hangat dari,</p>
+                <h3>Keluarga Syarif Hidayat</h3> 
+            </div>
+            
+            <div id="countdown-container">
+                <p>Menuju 1 Syawal:</p>
+                <div id="countdown">
+                    <div class="time-box"><span id="days">00</span><p>Hari</p></div>
+                    <div class="time-box"><span id="hours">00</span><p>Jam</p></div>
+                    <div class="time-box"><span id="mins">00</span><p>Menit</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioTakbir">
+        <source src="lagu/Takbiran Idul Fitri [c2gLCGT20ug].mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audioBedug">
+        <source src="lagu/BEDUG TAKBIRAN.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
