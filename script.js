@@ -146,3 +146,23 @@ h1 { color: #1b5e20; margin: 5px 0; font-size: 1.5rem; }
     animation: twinkle 4s infinite;
 }
 @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+// --- LOGIKA MATI OTOMATIS SAAT KELUAR WEB/TAB ---
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        // Jika pengguna pindah tab atau keluar browser
+        hentikanSemua();
+    } else {
+        // Opsi: Jika ingin audio putar lagi otomatis saat balik ke web (opsional)
+        // Jika tidak ingin otomatis putar lagi, biarkan bagian ini kosong
+    }
+});
+
+// Pastikan fungsi hentikanSemua sudah sesuai dengan yang sebelumnya:
+function hentikanSemua() {
+    audioTakbir.pause();
+    audioBedug.pause();
+    isPlaying = false;
+    musicBtn.innerText = "🎵 Putar Takbir & Bedug";
+    clearTimeout(audioTimer);
+}
