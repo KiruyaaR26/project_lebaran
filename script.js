@@ -1,84 +1,66 @@
+// --- 1. Tombol Buka & Audio ---
 const openingOverlay = document.getElementById('opening-overlay');
 const btnBuka = document.getElementById('btn-buka');
-
-btnBuka.addEventListener('click', () => {
-    // 1. Hilangkan overlay
-    openingOverlay.classList.add('fade-out');
-
-    // 2. Putar audio secara otomatis saat web terbuka
-    // Karena user sudah berinteraksi (klik tombol buka), browser akan mengizinkan audio putar
-    if (typeof putarAudio === "function") {
-        putarAudio();
-    }
-});
-
-// --- 1. Countdown ---
-const targetDate = new Date("March 30, 2026 00:00:00").getTime();
-
-setInterval(() => {
-    const now = new Date().getTime();
-    const diff = targetDate - now;
-    if (diff < 0) return;
-
-    document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-    document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    document.getElementById('mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-}, 1000);
-
-// --- 2. Kontrol Audio Ganda (3 Menit) ---
 const audioTakbir = document.getElementById('audioTakbir');
 const audioBedug = document.getElementById('audioBedug');
 const musicBtn = document.getElementById('musicBtn');
 
 let isPlaying = false;
-let timer3Menit;
+let audioTimer;
 
-function putarAudio() {
+btnBuka.addEventListener('click', () => {
+    openingOverlay.classList.add('fade-out');
+    putarSemua();
+});
+
+function putarSemua() {
     audioTakbir.currentTime = 0;
     audioBedug.currentTime = 0;
     audioTakbir.play();
     audioBedug.play();
-    
-    musicBtn.innerText = "⏸ Matikan Musik";
     isPlaying = true;
+    musicBtn.innerText = "⏸ Matikan Musik";
 
-    // Restart otomatis setelah 3 menit (180.000 ms)
-    timer3Menit = setTimeout(() => {
-        putarAudio(); 
-    }, 180000); 
+    // Loop Manual 3 Menit (180.000ms)
+    audioTimer = setTimeout(() => {
+        putarSemua();
+    }, 180000);
 }
 
-function hentikanAudio() {
+function hentikanSemua() {
     audioTakbir.pause();
     audioBedug.pause();
-    musicBtn.innerText = "🎵 Putar Takbir & Bedug";
     isPlaying = false;
-    clearTimeout(timer3Menit);
+    musicBtn.innerText = "🎵 Putar Takbir & Bedug";
+    clearTimeout(audioTimer);
 }
 
 musicBtn.addEventListener('click', () => {
-    if (!isPlaying) {
-        putarAudio();
-    } else {
-        hentikanAudio();
-    }
+    if (!isPlaying) putarSemua();
+    else hentikanSemua();
 });
 
-// --- 3. Kembang Api Otomatis ---
-const canvas = document.getElementById('fireworks');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// --- 2. Hitung Mundur ---
+const target = new Date("March 30, 2026 00:00:00").getTime();
+setInterval(() => {
+    const now = new Date().getTime();
+    const d = target - now;
+    if (d < 0) return;
+    document.getElementById('days').innerText = Math.floor(d / (1000 * 60 * 60 * 24));
+    document.getElementById('hours').innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    document.getElementById('mins').innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+}, 1000);
 
-function drawFireworks() {
-    const x = Math.random() * canvas.width;
-    const y = Math.random() * canvas.height;
-    ctx.fillStyle = `hsl(${Math.random() * 360}, 100%, 75%)`;
+// --- 3. Kembang Api ---
+const cvs = document.getElementById('fireworks');
+const ctx = cvs.getContext('2d');
+cvs.width = window.innerWidth; cvs.height = window.innerHeight;
+function draw() {
+    ctx.fillStyle = 'rgba(6, 33, 11, 0.1)';
+    ctx.fillRect(0, 0, cvs.width, cvs.height);
+    ctx.fillStyle = `hsl(${Math.random() * 360}, 100%, 70%)`;
     ctx.beginPath();
-    ctx.arc(x, y, 1.2, 0, Math.PI * 2);
+    ctx.arc(Math.random() * cvs.width, Math.random() * cvs.height, 1.5, 0, Math.PI * 2);
     ctx.fill();
-    
-    ctx.fillStyle = 'rgba(6, 33, 11, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
-setInterval(drawFireworks, 150);
+setInterval(draw, 150);
