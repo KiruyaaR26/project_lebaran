@@ -1,13 +1,13 @@
 /* --- DASAR & LAYOUT --- */
 body {
     margin: 0;
-    padding: 110px 0 50px 0; /* Memberi ruang agar foto atas tidak terpotong */
+    padding: 110px 0 50px 0; 
     font-family: 'Poppins', sans-serif;
     background: radial-gradient(circle at center, #1b5e20 0%, #06210b 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Memungkinkan scroll jika layar HP pendek */
+    align-items: flex-start; 
     overflow-x: hidden;
     position: relative;
 }
@@ -46,7 +46,7 @@ body {
     text-align: center;
     box-shadow: 0 15px 40px rgba(0,0,0,0.6);
     z-index: 10;
-    width: 82%; /* Jarak ke tepi layar kiri-kanan */
+    width: 82%; 
     max-width: 350px;
     border: 2px solid #ffd700;
     position: relative;
