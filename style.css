@@ -63,7 +63,6 @@ body {
 .family-photo-container {
     width: 125px;
     height: 125px;
-    /* Pastikan margin-top negatif tidak lebih besar dari padding body */
     margin: -75px auto 15px auto; 
     border-radius: 50%;
     border: 5px solid #ffd700;
