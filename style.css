@@ -1,13 +1,13 @@
 /* --- DASAR & BACKGROUND --- */
 body {
     margin: 0;
-    padding: 0;
+    padding: 100px 0 40px 0; 
     font-family: 'Poppins', sans-serif;
     background: radial-gradient(circle at center, #1b5e20 0%, #06210b 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center; /* Membuat card tepat di tengah layar */
+    align-items: flex-start; 
     overflow-x: hidden;
     position: relative;
 }
@@ -23,7 +23,7 @@ body {
 /* --- ANIMASI BULAN SABIT MULUS --- */
 .moon-container {
     position: absolute;
-    top: 3%; /* Sedikit lebih ke atas agar tidak tertutup card */
+    top: 3%; 
     right: 5%;
     width: 55px;
     height: 55px;
@@ -46,27 +46,25 @@ body {
 /* --- KARTU UCAPAN (RESPONSIF & BERJARAK) --- */
 .card {
     background: rgba(255, 255, 255, 0.96);
-    /* Memberi jarak isi teks ke tepi card */
-    padding: 25px 20px; 
+    padding: 25px 20px;
     border-radius: 25px;
     text-align: center;
     box-shadow: 0 15px 40px rgba(0,0,0,0.6);
     z-index: 10;
-    /* Memberi jarak card ke tepi layar HP (Kiri & Kanan) */
-    width: 82%; 
+    width: 82%;
     max-width: 350px;
     border: 2px solid #ffd700;
     position: relative;
     backdrop-filter: blur(10px);
-    /* Memberi jarak card ke tepi layar atas & bawah agar tidak nempel */
-    margin: 60px 20px; 
+    margin: 0 auto; 
 }
 
 /* --- FOTO KELUARGA MELAYANG --- */
 .family-photo-container {
     width: 125px;
     height: 125px;
-    margin: -85px auto 15px auto;
+    /* Pastikan margin-top negatif tidak lebih besar dari padding body */
+    margin: -75px auto 15px auto; 
     border-radius: 50%;
     border: 5px solid #ffd700;
     overflow: hidden;
