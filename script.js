@@ -52,15 +52,29 @@ window.onload = () => {
     });
 
     // --- Hitung Mundur ---
-    const target = new Date("March 30, 2026 00:00:00").getTime();
-    setInterval(() => {
-        const now = new Date().getTime();
-        const d = target - now;
-        if (d < 0) return;
-        document.getElementById('days').innerText = Math.floor(d / (1000 * 60 * 60 * 24));
-        document.getElementById('hours').innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        document.getElementById('mins').innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
-    }, 1000);
+const targetDate = new Date("2026-03-20T00:00:00+07:00").getTime();
+
+const countdownInterval = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    // Jika waktu sudah lewat atau pas hari H
+    if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('days').innerText = "00";
+        document.getElementById('hours').innerText = "00";
+        document.getElementById('mins').innerText = "00";
+        return;
+    }
+
+    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    document.getElementById('days').innerText = d.toString().padStart(2, '0');
+    document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+    document.getElementById('mins').innerText = m.toString().padStart(2, '0');
+}, 1000);
 
     // --- Kembang Api ---
     const cvs = document.getElementById('fireworks');
